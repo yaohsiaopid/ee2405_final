@@ -3,6 +3,9 @@ Our team consists of five members, and we are making our robots to collaborate t
 
 I am responsible for packaging. My robot will first navigate to operation area(tagged by red line on the field) then read the picture on the individual package to decide how many scoops for this package(either 1 or 2). Then it scoops beans from the bucket(assuming put on the  side of the road). Next it will bring the package with beans to next transition area(indicated by control center by MQTT) to complete its job.
 
+Collaborators : Chuan-Chia Chang, Thomas Chou, Ya-Ting Yang, Yi-Yu Cheng 
+
+
 ## Hardware
 * Boe Bot Car 
 * K64F
@@ -67,3 +70,8 @@ Udoo Neo is responsible to process the input information such as mqtt messages a
     * scoop_ops(num):   
     After the network outputs the detection result, it will call a rpcfunction called ScoopOp defined in main.cpp of the mbed files. The ScoopOp contains the hard coded commands for scooping the beans out of the bucket then put into the package.    
 
+
+
+## Other fun things we tried  
+* Naive DDOS the Udoo Neo ?!: Only tried out using serveral PCs to `ping` one Udoo Neo (running mqtt center) simultaneously. Though it seemed that the receiving on the devices does have longer latency, it does no harm for the operation of the udoo neo, because this naive method only blow up the incoming packet of the wireless card on the udoo neo ? ?? 
+* Thinking: The udoo-neo is simply too unstable because the power system quickly runs out of power because of usage of too mamy servos and the charged batteries as the power source.
