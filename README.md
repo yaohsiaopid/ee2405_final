@@ -20,22 +20,22 @@ Collaborators : Chuan-Chia Chang, Thomas Chou, Ya-Ting Yang, Yi-Yu Cheng
 
 ## Steps
 1. Set up environment  
-    - Assemble the Boe Bot car as shown below   
-![Imgur](https://i.imgur.com/K66OMjy.jpg)   
-![Imgur](https://i.imgur.com/URdE8fx.jpg)  
-
-    - Set up a LAN with the wireless router   
+  (a) Assemble the Boe Bot car as shown below     
+  (b) Set up a LAN with the wireless router
+  ![Imgur](https://i.imgur.com/K66OMjy.jpg)     
+  ![Imgur](https://i.imgur.com/URdE8fx.jpg)  
+  
+     
 
 2. Mbed  
-The `mbed_` folder contains all the library and `main.cpp` that will be flashed into K64F board. 
+The `mbed_` folder contains all the library and `main.cpp` that will be flashed into K64F board.   
+The libarary we use:   
 
-The libarary we use:  
-- bbcar control: the original library can not init other parallax class such as parallax_stdservo aside from parallax_servo, because the compiler will raise parallax_stdservo as undefined even I include it in the `bbcar.h`  
-It turned out that the problem lies in `parallax` module. Only did `parallax_servo.h` has the `#ifndef` macro in it. So once we added `#ifndef` in other header files in parallax, the problem never raised again because the `#ifndef` will prevent library be included twice.   
+- bbcar control: the original library can not init other parallax class such as parallax_stdservo aside from parallax_servo, because the compiler will raise parallax_stdservo as undefined even I include it in the `bbcar.h`    
+  It turned out that the problem lies in `parallax` module. Only did `parallax_servo.h` has the `#ifndef` macro in it. So once we added `#ifndef` in other header files in parallax, the problem never raised again because the `#ifndef` will prevent library be included twice.   
 
-- bbcar_rpc  
-
-The `main.cpp` simply goes into a loop taking commands from serial after initiating the servos and the claw. Also, it includes some custom function for claw operations.
+- bbcar_rpc    
+  The `main.cpp` simply goes into a loop taking commands from serial after initiating the servos and the claw. Also, it includes some custom function for claw operations.
 
 3. python script on udoo neo 
 Udoo Neo is responsible to process the input information such as mqtt messages and input images and make commands to mbed controller for the motion in resopnse to the inputs. 
